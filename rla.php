@@ -6,7 +6,7 @@ include ($myrandomlaugh);
 
 $response = new Services_Twilio_Twiml();
 $response->say('Hello, thank you for calling Laugh Institute\'s Random Laugh Access Machine. We will now play a rondom laugh just for you.' );
-$response->play("http://laughinstitute.org/rla/rla.php". array_rand($mlLaughs));
+$response->play("http://laughinstitute.org/rla/". array_rand($mlLaughs));
 $response->say('Thank you for calling us at Laugh Institute. Have a pleasant day!');
 $response->hang-up();
 print $response;
