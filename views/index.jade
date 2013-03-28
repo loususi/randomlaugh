@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Send a laugh to yourself or a friend just by entering your phone number below.
+  div
+    input(id="area_code",type="text",placeholder="###",size="3",maxLength="3")
+    input(id="phone_part_1",type="text",placeholder="###",size="3",maxLength="3")
+    input(id="phone_part_2",type="text",placeholder="####",size="4",maxLength="4")
+    button(onclick="sendLaugh()") make 'em laugh
