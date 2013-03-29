@@ -3,7 +3,9 @@ var fs = require('fs');
 
 //require the Twilio module and create a REST client
 var account_sid = global.twilio[global.environment].account_sid;
+console.log(account_sid);
 var auth_token = global.twilio[global.environment].auth_token;
+console.log(auth_token);
 var client = require('twilio')(account_sid, auth_token);
 
 /*
@@ -18,19 +20,22 @@ exports.index = function(req, res){
 // fires off request to Twilio API to call customer with random laugh track
 exports.laugh = function(req, res){
   
-  var number_to_call = '+' + res.query.phone;
+  var number_to_call = '+' + req.query.phone;
   
   getRandomLaugh( function(laugh) {
     console.log(laugh);
   });
   
+  console.log(global.twilio[global.environment].number);
+  console.log(global.domain[global.environment] + '/twilio/laugh.xml');
+  
   //Place a phone call, and respond with TwiML instructions from the given URL
   client.makeCall({
 
       to: number_to_call, // Any number Twilio can call
-      from: '+14506667788', // A number you bought from Twilio and can use for outbound communication
-      url: global.domain[global.environment] + '/laugh.xml' // A URL that produces an XML document (TwiML) which contains instructions for the call
-
+      from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
+      // url: global.domain[global.environment] + '/twilio/laugh.xml' // A URL that produces an XML document (TwiML) which contains instructions for the call
+      url : 'http://randomlaugh.herokuapp.com/twilio/laugh.xml'
   }, function(err, responseData) {
 
       //executed when the call has been initiated.
