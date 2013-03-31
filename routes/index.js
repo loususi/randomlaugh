@@ -26,14 +26,17 @@ exports.laughxml = function(req, res) {
   console.log(path);
   fs.readFile(path, function (err, data) {
     console.log(err);
-    console.log(data);
+    console.log(data.toString());
     if (err) throw err;
-    res.send(data);
+    res.send(data.toString());
   });
   
 }
 
 exports.laughredirect = function(req, res) {
+  console.log('POST /laughredirect');
+  console.log(req.body);
+  
   res.redirect('/twilio/laugh.xml');
 }
 
