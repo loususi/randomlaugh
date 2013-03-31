@@ -1,11 +1,13 @@
 function sendLaugh() {
   var phone_number = "1" + $('#area_code').val() + $('#phone_part_1').val() + $('#phone_part_2').val();
+  var from_name = $('#from_name').val();
+
   console.log(phone_number);
   
   $.ajax({
     url : '/laugh',
     type : 'GET',
-    data : { phone : phone_number}
+    data : {phone : phone_number} 
   }).done( function(data) {
     console.log(data);
   });
