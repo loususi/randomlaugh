@@ -33,14 +33,6 @@ exports.laughxml = function(req, res) {
   
 }
 
-exports.laughredirect = function(req, res) {
-  console.log('POST /laughredirect');
-  console.log(req.body);
-  
-  res.redirect('/twilio/laugh.xml');
-}
-
-
 // fires off request to Twilio API to call customer with random laugh track
 exports.laugh = function(req, res){
   
