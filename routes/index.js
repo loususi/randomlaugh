@@ -19,10 +19,12 @@ exports.index = function(req, res){
 };
 
 exports.laughxml = function(req, res) {
+  var call_id = req.params.id;
   console.log('POST /laughxml');
   console.log(req.body);
+  console.log('CALL ID: ' + call_id);
 
-  var path = currentDirectory() + 'public/twilio/laugh.xml';
+  var path = currentDirectory() + '/twilio/laugh_'+call_id.toString()+'.xml';
   console.log(path);
   fs.readFile(path, function (err, data) {
     console.log(err);
@@ -38,17 +40,16 @@ exports.laugh = function(req, res){
   
   var number_to_call = '+' + req.query.phone;
   var twilio_xml_url = req.query.xmlurl;
-  //var from_name = req.query.from_name;
+  var from_name = req.query.from_name;
   
   getRandomLaugh( function(laugh) {
     console.log('Number to Call: ' + number_to_call);
     console.log('Laugh File: ' + laugh);
     console.log('Twilio XML URL: ' + twilio_xml_url);
-    //console.log("From name:" + from_name);
+    console.log("From name:" + from_name);
 
-    var testPhrase = "I cant believe that I can do this!";
-
-    writeCallInstructions(testPhrase, function(call_instructions_path) {
+    var phone_message = "Hello, " + from_name + "has sent you a laugh";
+    writeCallInstructions(phone_message, function(call_instructions_path) {
 
       var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/laugh.xml';
 
@@ -62,6 +63,7 @@ exports.laugh = function(req, res){
             url : twilio_xml_url
         }, function(err, responseData) {
             console.log('CALL HAS BEEN INITIATED');
+            res.send({status: "success"});
             //executed when the call has been initiated.
             // console.log(url);
             // console.log(responseData); // outputs "+14506667788"
@@ -83,22 +85,24 @@ function getRandomLaugh(callback) {
 
 function writeCallInstructions(testPhrase, callback) {
 
+  var call_id = Math.floor(Math.random()*10^8+1);
+
   //Build XML with package xmlbuilder
   var call_instructions_path = null;
   var xml = builder.create('Response')
-    .ele('say', {'voice': 'woman','language':'en'}, testPhrase)
+    .ele('say', {'voice': 'woman','language':'en'}, phone_message)
     .end({ pretty: true});
 
   //Save XML to file\
-  var file_path = currentDirectory() + 'public/twilio/test.xml';
+  var file_path = currentDirectory() + 'public/twilio/test'+call_id.toString()+'.xml';
   fs.writeFile(file_path, xml, function(err) {
       if(err) {
           console.log(err);
       } else {
-          var call_instructions_path = global.twilio[global.environment] + '/twilio/test.xml';
+          var call_instructions_path = global.domain[global.environment] + '/laughxml/' + call_id.toString();
       }
   }); 
-
+  console.log('Call Instructions Path: ' + call_instructions_path);
   callback(call_instructions_path);
 }
 

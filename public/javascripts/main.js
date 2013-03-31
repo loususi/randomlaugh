@@ -9,7 +9,7 @@ function sendLaugh() {
   $.ajax({
     url : '/laugh',
     type : 'GET',
-    data : {phone : phone_number, xmlurl : xmlurl} 
+    data : {phone : phone_number, xmlurl : xmlurl, from_name: from_name} 
   }).done( function(data) {
     console.log(data);
   });

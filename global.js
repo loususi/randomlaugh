@@ -18,7 +18,7 @@ module.exports = {
    }
  },
  domain : {
-   production : "http://fundthelife.com/downloads",
+   production : "http://randomlaugh.herokuapp.com",
    development : "http://localhost:3000"
  }
 }
