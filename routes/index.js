@@ -62,7 +62,7 @@ exports.laugh = function(req, res){
         }, function(err, responseData) {
         
             //executed when the call has been initiated.
-            console.log(url);
+            // console.log(url);
             console.log(responseData); // outputs "+14506667788"
         
         });
