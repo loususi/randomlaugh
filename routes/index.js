@@ -19,8 +19,14 @@ exports.index = function(req, res){
 };
 
 exports.laughxml = function(req, res) {
-  var path = currentDirectory() + '/public/twilio/laugh.xml';
+  console.log('POST /laughxml');
+  console.log(req.body);
+
+  var path = currentDirectory() + 'public/twilio/laugh.xml';
+  console.log(path);
   fs.readFile(path, function (err, data) {
+    console.log(err);
+    console.log(data);
     if (err) throw err;
     res.send(data);
   });
@@ -60,10 +66,10 @@ exports.laugh = function(req, res){
             //url : call_instructions_path
             url : twilio_xml_url
         }, function(err, responseData) {
-        
+            console.log('CALL HAS BEEN INITIATED');
             //executed when the call has been initiated.
             // console.log(url);
-            console.log(responseData); // outputs "+14506667788"
+            // console.log(responseData); // outputs "+14506667788"
         
         });
     });
@@ -89,7 +95,7 @@ function writeCallInstructions(testPhrase, callback) {
     .end({ pretty: true});
 
   //Save XML to file\
-  var file_path = currentDirectory() + '/public/twilio/test.xml';
+  var file_path = currentDirectory() + 'public/twilio/test.xml';
   fs.writeFile(file_path, xml, function(err) {
       if(err) {
           console.log(err);
