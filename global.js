@@ -18,7 +18,7 @@ module.exports = {
    }
  },
  domain : {
-   production : "http://sheltered-everglades-6385.herokuapp.com",
+   production : "http://fundthelife.com/downloads",
    development : "http://localhost:3000"
  }
 }
