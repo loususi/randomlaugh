@@ -83,7 +83,7 @@ function getRandomLaugh(callback) {
   });
 }
 
-function writeCallInstructions(testPhrase, callback) {
+function writeCallInstructions(phone_message, callback) {
 
   var call_id = Math.floor(Math.random()*10^8+1);
 
