@@ -1,13 +1,31 @@
 extends layout
 
 block content
-  div#form
-    h1= title
-    p Send a laugh to yourself or a friend just by entering your phone number below.
+  div#navwrapper
     div
-      input(id="from_name",type="text",placeholder="Your Name",size="20",maxLength="20")
-      input(id="area_code",type="text",placeholder="###",size="3",maxLength="3")
-      input(id="phone_part_1",type="text",placeholder="###",size="3",maxLength="3")
-      input(id="phone_part_2",type="text",placeholder="####",size="4",maxLength="4")
-      button(onclick="sendLaugh()") make 'em laugh
+      p.navbarfont 
+        | Brought to you by the 
+        | <a href="mailto:idea.squad.brain.trust@gmail.com">Idea Squad Brain Trust</a>
+  div#container
+    div#form
+      h1= title
+      p 
+        | Send a laugh to yourself or a friend just by entering your phone number below.
+        | <a href="#", onClick="moreInfo()">More</a>
+      div
+        input.padRightMarginRight(id="from_name",type="text",placeholder="Your Name",size="30",maxLength="30")
+        input(id="area_code",type="text",placeholder="###",size="3",maxLength="3")
+        input(id="phone_part_1",type="text",placeholder="###",size="3",maxLength="3")
+        input.padRight(id="phone_part_2",type="text",placeholder="####",size="4",maxLength="4")
+        button.button(onclick="sendLaugh()") make 'em laugh
     div#confirmation
+    div#secondWindow
+      div#appearOnClick
+        h2 What does it do?
+        p Sends "Your Name has sent you a laugh" followed by one of our professionally engineered laughs.
+
+script
+      var _gaq=[['_setAccount','UA-39754045-1'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));

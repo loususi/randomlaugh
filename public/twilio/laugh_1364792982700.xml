@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Response>
+  <Say voice="woman" language="en">Hello, Skylar has sent you a laugh</Say>
+  <Play>http://localhost:3000/laughtracks/Evil_Laugh_Male_6-Himan-1359990674.mp3</Play>
+</Response>

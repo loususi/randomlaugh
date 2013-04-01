@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Response>
+  <Say voice="woman" language="en">Hello,  has sent you a laugh</Say>
+  <Play>http://localhost:3000/laughtracks/Creepy_Laugh-Adam_Webb-235643261.mp3</Play>
+</Response>

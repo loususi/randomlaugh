@@ -15,7 +15,7 @@ var client = require('twilio')(account_sid, auth_token);
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Make \'Em Laugh' });
+  res.render('index', { title: 'Make \'Em Laugh', brand: 'Idea Squad Brain Trust' });
 };
 
 exports.laughxml = function(req, res) {

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Response>
+  <Say voice="woman" language="en">Hello, Skylar and Rachael has sent you a laugh</Say>
+  <Play>http://localhost:3000/laughtracks/louHystericalLaughter.wav</Play>
+</Response>

@@ -10,8 +10,12 @@ function sendLaugh() {
     data : {phone : phone_number, from_name: from_name} 
   }).done( function(data) {
     console.log(data);
-    $('#confirmation').html('<p>Your laugh was sent!<p>');
+    $('#confirmation').html('<p>Your laugh was sent!<p>').show( "fold", 1000 );
   });
+}
+
+function moreInfo(){
+  $('#secondWindow').show("clip",500);
 }
 
 function tabToNext(original_field, destination_field) {
