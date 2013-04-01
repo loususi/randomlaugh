@@ -9,17 +9,42 @@ block content
   div#container
     div#form
       h1= title
-      p 
-        | Send a laugh to yourself or a friend just by entering your phone number below.
-        | <a href="#", onClick="moreInfo()">More</a>
+      p Send a laugh to yourself or a friend just by entering your phone number below. 
+        a(href="#", onClick="moreInfo()") more
       div
         input.padRightMarginRight(id="from_name",type="text",placeholder="Your Name",size="30",maxLength="30")
         input(id="area_code",type="text",placeholder="###",size="3",maxLength="3")
         input(id="phone_part_1",type="text",placeholder="###",size="3",maxLength="3")
         input.padRight(id="phone_part_2",type="text",placeholder="####",size="4",maxLength="4")
         button.button(onclick="sendLaugh()") make 'em laugh
-    div#confirmation
+    div#confirmation(class="hidden")
+      hr
+      p(style="font-size:80%") Keep the world laughing. Buy some laughs so we can keep the app running.
+        form(action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/545917630013131", id="BB_BuyButtonForm", method="post", name="BB_BuyButtonForm", target="_top")
+          table(cellpadding="5", cellspacing="0", width="100%")
+              tr
+                td(align="right", width="1%")
+                  select(name="item_selection_1")
+                    option(value="1")$2.00 - 100 laughs
+                    option(value="2")$10.00 - 500 laughs
+                  input(name="item_option_name_1", type="hidden", value="100 laughs")
+                  input(name="item_option_price_1", type="hidden", value="2.0")
+                  input(name="item_option_description_1", type="hidden", value="Buy the world 100 laughs")
+                  input(name="item_option_quantity_1", type="hidden", value="1")
+                  input(name="item_option_currency_1", type="hidden", value="USD")
+                  input(name="item_option_name_2", type="hidden", value="500 laughs")
+                  input(name="item_option_price_2", type="hidden", value="10.0")
+                  input(name="item_option_description_2", type="hidden", value="Buy the world 500 laughs")
+                  input(name="item_option_quantity_2", type="hidden", value="1")
+                  input(name="item_option_currency_2", type="hidden", value="USD")
+                td(align="left", width="1%")
+                  input(alt="", src="https://checkout.google.com/buttons/buy.gif?merchant_id=545917630013131&amp;w=121&amp;h=44&amp;style=trans&amp;variant=text&amp;loc=en_US", type="image")
+                  //- input(alt="", src="https://checkout.google.com/buttons/buy.gif?merchant_id=545917630013131&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US", type="image")
     div#secondWindow
       div#appearOnClick
         h2 What does it do?
-        p Sends "Your Name has sent you a laugh" followed by one of our professionally engineered laughs.
+        p(style="font-size:80%") We use the Twilio API
+          | to call your friend and when they answer, 
+          | we play the message "Hello, <insert your name> 
+          | has sent you a laugh" followed by a giggly, 
+          | outrageous, contagious laugh.

@@ -27,6 +27,10 @@ h2 {
   margin-bottom: 0px;
 }
 
+hr {
+  color: white;
+}
+
 a {
   color: #00B7FF;
 }
@@ -129,4 +133,12 @@ padding-top: 1px;
 
 .padRight {
   margin-right: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }

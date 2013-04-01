@@ -10,7 +10,8 @@ function sendLaugh() {
     data : {phone : phone_number, from_name: from_name} 
   }).done( function(data) {
     console.log(data);
-    $('#confirmation').html('<p>Your laugh was sent!<p>').show( "fold", 1000 );
+    $('#confirmation').prepend('<p>Your laugh was sent!<p>').show( "fold", 1000 );
+    $('#confirmation').toggleHidden();
   });
 }
 
@@ -44,3 +45,7 @@ $(document).ready( function() {
     }
   });
 });
+
+function toggleHidden(element_id) {
+  $('#' + element_id).toggleClass("hidden");
+}
