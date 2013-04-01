@@ -86,7 +86,8 @@ function writeCallInstructions(params, callback) {
   var call_instructions_path = null;
   var xml = builder.create('Response')
     .ele('Say', {'voice': 'woman','language':'en'}, phone_message)
-    .ele('Audio', laugh_path)
+    .up()
+    .ele('Play', laugh_path)
     .end({ pretty: true});
 
   //Save XML to file\
