@@ -22,13 +22,19 @@ function tabToNext(original_field, destination_field) {
 }
 
 $(document).ready( function() {
-  $('#area_code').focus();
+  $('#from_name').focus();
+  $('#from_name').keyup(function() {
+    tabToNext('from_name', 'area_code');
+  });
+
   $('#area_code').keyup(function() {
     tabToNext('area_code', 'phone_part_1');
   });
+
   $('#phone_part_1').keyup(function() {
     tabToNext('phone_part_1', 'phone_part_2');
   });
+  
   $('#phone_part_2').keyup(function() {
     if($('#phone_part_2').val().length == $('#phone_part_2').attr("maxLength")) {
       $('button').focus();
