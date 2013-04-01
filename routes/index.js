@@ -45,7 +45,7 @@ exports.laugh = function(req, res){
   getRandomLaugh( function(laugh) {
     var phone_message = "Hello, " + from_name + " has sent you a laugh";
     var laugh_path = global.domain[global.environment] + '/laughtracks/'+ laugh;
-    writeCallInstructions({phone_message: phone_message, laugh_path : laugh}, function(call_instructions_path) {
+    writeCallInstructions({phone_message: phone_message, laugh_path : laugh_path}, function(call_instructions_path) {
 
       var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/twilio/laugh.xml';
       console.log('Number to Call: ' + number_to_call);
