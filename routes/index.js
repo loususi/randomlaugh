@@ -82,7 +82,7 @@ function writeCallInstructions(phone_message, callback) {
   //Build XML with package xmlbuilder
   var call_instructions_path = null;
   var xml = builder.create('Response')
-    .ele('say', {'voice': 'woman','language':'en'}, phone_message)
+    .ele('Say', {'voice': 'woman','language':'en'}, phone_message)
     .end({ pretty: true});
 
   //Save XML to file\
