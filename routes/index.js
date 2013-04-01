@@ -24,7 +24,7 @@ exports.laughxml = function(req, res) {
   console.log(req.body);
   console.log('CALL ID: ' + call_id);
 
-  var path = currentDirectory() + 'twilio/laugh_'+call_id.toString()+'.xml';
+  var path = currentDirectory() + 'public/twilio/laugh_'+call_id.toString()+'.xml';
   console.log(path);
   fs.readFile(path, function (err, data) {
     console.log(err);
