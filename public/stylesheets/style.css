@@ -1,5 +1,5 @@
 html { 
-  background: url(../images/backgroundR.png) no-repeat center center fixed; 
+  background: url(../images/backgroundR.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -10,16 +10,26 @@ body {
   padding: 50px;
   font: 20px Helvetica, Arial, sans-serif;
   width: 50%;
+  color: white;
 }
 
 h1 {
   font-family: 'Kameron', serif;
-  color: #FF3300;
+  color: orange;
   font-size: 50px;
   margin-bottom: 0px;
-  text-shadow: 1px 1px #555555;
+  text-shadow: 5px 5px black;
 }
 
 a {
   color: #00B7FF;
+}
+
+div#form {
+  background-color: rgba(0,0,0,0.6);
+  padding-bottom: 40px;
+  padding-left: 70px;
+  padding-top: 10px;
+  padding-right: -50px;
+
 }
