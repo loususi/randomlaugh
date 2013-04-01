@@ -1,5 +1,5 @@
 module.exports = {
-  environment : "production",
+  environment : "development",
   twilio : {
     production : {
       account_sid : "ACb6254063b085751ec6d90eb22934fe7d",

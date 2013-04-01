@@ -53,16 +53,20 @@ exports.laugh = function(req, res){
       console.log("Laugh Path:" + laugh_path);
       console.log("From name:" + from_name);
 
-        // // Place a phone call, and respond with TwiML instructions from the given URL
+      if(global.environment == "production") {
         client.makeCall({
-            to: number_to_call, // Any number Twilio can call
-            from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
-            url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
+          to: number_to_call, // Any number Twilio can call
+          from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
+          url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
         }, function(err, responseData) {
-            console.log('CALL HAS BEEN INITIATED');
-            res.send({status: "success"});
+          console.log('CALL HAS BEEN INITIATED');
+          res.send({status: "success"});
         });
+      } else {
+        res.send({status: "success"});
+      }
     });
+ 
 
   });
 }
