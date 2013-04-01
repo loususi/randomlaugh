@@ -21,11 +21,9 @@ exports.index = function(req, res){
 exports.laughxml = function(req, res) {
   var call_id = req.params.id;
   console.log('POST /laughxml');
-  console.log(req.body);
   console.log('CALL ID: ' + call_id);
 
   var path = currentDirectory() + 'public/twilio/laugh_'+call_id.toString()+'.xml';
-  console.log(path);
   fs.readFile(path, function (err, data) {
     console.log(err);
     console.log(data.toString());
@@ -57,7 +55,8 @@ exports.laugh = function(req, res){
         client.makeCall({
           to: number_to_call, // Any number Twilio can call
           from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
-          url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
+          url : call_instructions_path, // A URL that produces an XML document (TwiML) which contains instructions for the call 
+          ifMachine : "Continue"
         }, function(err, responseData) {
           console.log('CALL HAS BEEN INITIATED');
           res.send({status: "success"});

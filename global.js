@@ -1,5 +1,5 @@
 module.exports = {
-  environment : "production",
+  environment : "development",
   twilio : {
     production : {
       account_sid : "ACb6254063b085751ec6d90eb22934fe7d",
@@ -19,6 +19,6 @@ module.exports = {
  },
  domain : {
    production : "http://randomlaugh.herokuapp.com",
-   development : "http://localhost:3000"
+   development : "http://randomlaugh-dev.herokuapp.com"
  }
 }
