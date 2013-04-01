@@ -43,31 +43,23 @@ exports.laugh = function(req, res){
   var from_name = req.query.from_name;
   
   getRandomLaugh( function(laugh) {
-    console.log('Number to Call: ' + number_to_call);
-    console.log('Laugh File: ' + laugh);
-    console.log('Twilio XML URL: ' + twilio_xml_url);
-    console.log("From name:" + from_name);
-
     var phone_message = "Hello, " + from_name + "has sent you a laugh";
     writeCallInstructions(phone_message, function(call_instructions_path) {
 
-      var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/laugh.xml';
+      var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/twilio/laugh.xml';
+      console.log('Number to Call: ' + number_to_call);
+      console.log('Laugh File: ' + laugh);
+      console.log('Twilio XML URL: ' + twilio_xml_url);
+      console.log("From name:" + call_instructions_path);
 
         // Place a phone call, and respond with TwiML instructions from the given URL
         client.makeCall({
-        
             to: number_to_call, // Any number Twilio can call
             from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
-            // url: global.domain[global.environment] + '/laugh.xml' // A URL that produces an XML document (TwiML) which contains instructions for the call
-            //url : call_instructions_path
-            url : twilio_xml_url
+            url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
         }, function(err, responseData) {
             console.log('CALL HAS BEEN INITIATED');
             res.send({status: "success"});
-            //executed when the call has been initiated.
-            // console.log(url);
-            // console.log(responseData); // outputs "+14506667788"
-        
         });
     });
 
@@ -96,14 +88,15 @@ function writeCallInstructions(phone_message, callback) {
   //Save XML to file\
   var file_path = currentDirectory() + 'public/twilio/test'+call_id.toString()+'.xml';
   fs.writeFile(file_path, xml, function(err) {
+    var call_instructions_path = null;
       if(err) {
           console.log(err);
       } else {
-          var call_instructions_path = global.domain[global.environment] + '/laughxml/' + call_id.toString();
+          call_instructions_path = global.domain[global.environment] + '/laughxml/' + call_id.toString();
+          console.log('Call Instructions Path: ' + call_instructions_path);
       }
+      callback(call_instructions_path);
   }); 
-  console.log('Call Instructions Path: ' + call_instructions_path);
-  callback(call_instructions_path);
 }
 
 
