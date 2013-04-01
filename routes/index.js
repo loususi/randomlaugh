@@ -24,7 +24,7 @@ exports.laughxml = function(req, res) {
   console.log(req.body);
   console.log('CALL ID: ' + call_id);
 
-  var path = currentDirectory() + '/twilio/laugh_'+call_id.toString()+'.xml';
+  var path = currentDirectory() + 'twilio/laugh_'+call_id.toString()+'.xml';
   console.log(path);
   fs.readFile(path, function (err, data) {
     console.log(err);
@@ -49,8 +49,8 @@ exports.laugh = function(req, res){
       var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/twilio/laugh.xml';
       console.log('Number to Call: ' + number_to_call);
       console.log('Laugh File: ' + laugh);
-      console.log('Twilio XML URL: ' + twilio_xml_url);
-      console.log("From name:" + call_instructions_path);
+      console.log('Call Instructions Path: ' + call_instructions_path);
+      console.log("From name:" + from_name);
 
         // Place a phone call, and respond with TwiML instructions from the given URL
         client.makeCall({
@@ -77,7 +77,7 @@ function getRandomLaugh(callback) {
 
 function writeCallInstructions(phone_message, callback) {
 
-  var call_id = Math.floor(Math.random()*10^8+1);
+  var call_id = Math.floor(Math.random()*1000000000+1);
 
   //Build XML with package xmlbuilder
   var call_instructions_path = null;
@@ -93,7 +93,6 @@ function writeCallInstructions(phone_message, callback) {
           console.log(err);
       } else {
           call_instructions_path = global.domain[global.environment] + '/laughxml/' + call_id.toString();
-          console.log('Call Instructions Path: ' + call_instructions_path);
       }
       callback(call_instructions_path);
   }); 
