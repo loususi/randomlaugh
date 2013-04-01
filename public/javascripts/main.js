@@ -10,6 +10,7 @@ function sendLaugh() {
     data : {phone : phone_number, from_name: from_name} 
   }).done( function(data) {
     console.log(data);
+    $('#confirmation').html('<p>Your laugh was sent!<p>');
   });
 }
 
