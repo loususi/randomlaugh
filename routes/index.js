@@ -43,7 +43,7 @@ exports.laugh = function(req, res){
   var from_name = req.query.from_name;
   
   getRandomLaugh( function(laugh) {
-    var phone_message = "Hello, " + from_name + "has sent you a laugh";
+    var phone_message = "Hello, " + from_name + " has sent you a laugh";
     writeCallInstructions(phone_message, function(call_instructions_path) {
 
       var call_instructions_path = call_instructions_path != null ? call_instructions_path : global.domain[global.environment] + '/twilio/laugh.xml';
@@ -86,7 +86,7 @@ function writeCallInstructions(phone_message, callback) {
     .end({ pretty: true});
 
   //Save XML to file\
-  var file_path = currentDirectory() + 'public/twilio/test'+call_id.toString()+'.xml';
+  var file_path = currentDirectory() + 'public/twilio/laugh_'+call_id.toString()+'.xml';
   fs.writeFile(file_path, xml, function(err) {
     var call_instructions_path = null;
       if(err) {
