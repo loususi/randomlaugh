@@ -39,7 +39,6 @@ exports.laughxml = function(req, res) {
 exports.laugh = function(req, res){
   
   var number_to_call = '+' + req.query.phone;
-  var twilio_xml_url = req.query.xmlurl;
   var from_name = req.query.from_name;
   
   getRandomLaugh( function(laugh) {
