@@ -55,14 +55,14 @@ exports.laugh = function(req, res){
       console.log("From name:" + from_name);
 
         // // Place a phone call, and respond with TwiML instructions from the given URL
-        // client.makeCall({
-        //     to: number_to_call, // Any number Twilio can call
-        //     from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
-        //     url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
-        // }, function(err, responseData) {
-        //     console.log('CALL HAS BEEN INITIATED');
-        //     res.send({status: "success"});
-        // });
+        client.makeCall({
+            to: number_to_call, // Any number Twilio can call
+            from: global.twilio[global.environment].number, // A number you bought from Twilio and can use for outbound communication
+            url : call_instructions_path // A URL that produces an XML document (TwiML) which contains instructions for the call 
+        }, function(err, responseData) {
+            console.log('CALL HAS BEEN INITIATED');
+            res.send({status: "success"});
+        });
     });
 
   });
