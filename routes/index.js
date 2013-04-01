@@ -75,7 +75,7 @@ function getRandomLaugh(callback) {
   var path = currentDirectory() + 'public/laughtracks';
   fs.readdir(path, function(err, file_names) {
     //TODO handle err
-    var laugh = file_names[Math.floor(Math.random()*file_names.length+1)];
+    var laugh = file_names[Math.floor(Math.random()*file_names.length)];
     callback(laugh);
   });
 }
