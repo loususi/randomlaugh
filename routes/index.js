@@ -87,7 +87,7 @@ function writeCallInstructions(params, callback) {
     .up()
     .ele('Play', laugh_path)
     .up()
-    .ele('Say', {'voice':'woman','language':'en'}, ". To send a laugh to a friend, go to w w w dot random acts of laughter, dot com")
+    .ele('Say', {'voice':'woman','language':'en'}, "To send a laugh to a friend, go to w w w dot random acts of laughter, dot com")
     .end({ pretty: true});
 
   //Save XML to file\
